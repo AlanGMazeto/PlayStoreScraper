@@ -14,6 +14,7 @@ import play_scraper
 import streamlit as st
 import base64
 from io import BytesIO
+import xlsxwriter
 
 
 st.write("""
