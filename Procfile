@@ -1,1 +1,1 @@
-web: streamlit run fullPlayScraper.py --server.port=5000
+web: sh setup.sh && streamlit run fullPlayScraper.py
