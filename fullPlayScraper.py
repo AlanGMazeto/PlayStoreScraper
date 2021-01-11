@@ -1,22 +1,9 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[ ]:
-
-
-
-
-
-# In[62]:
-
-
 import json
 import pandas as pd
 from tqdm import tqdm
 import seaborn as sns
 import matplotlib.pyplot as plt
 import requests
-#from google.colab import files
 
 from pygments import highlight
 from pygments.lexers import JsonLexer
@@ -30,17 +17,10 @@ import base64
 from io import BytesIO
 
 
-# In[63]:
-
-
 st.write("""
 # Play Store Scraping Web App
 Encontre aplicativos que precisam de tradução
 """)
-
-
-
-# In[64]:
 
 
 st.write("""
@@ -58,25 +38,17 @@ for i in palavras:
     paginas = paginas + play_scraper.search(i, page=0)
 
 
-# In[65]:
-
-
 for p in paginas:
     
     if p not in paginasReais:
         paginasReais.append(p)
 
 
-# In[66]:
-
 
 comentarios = []
 for ap in tqdm(paginasReais):
   info = app(ap['app_id'], lang='pt', country='us')
   comentarios.append(info)
-
-
-# In[67]:
 
 
 titulos = []
@@ -94,15 +66,10 @@ for i in comentarios:
             linkApps.append(i['url'])
 
 
-# In[68]:
-
-
 base = pd.DataFrame({'Titulo':titulos,'Comentario':coment,'Email':emailApps,'Link':linkApps})
 st.write(base)
 st.write('Foram encontrados ', len(base), ' comentários relevantes')
 
-
-# In[69]:
 
 
 def to_excel(df):
@@ -112,9 +79,6 @@ def to_excel(df):
     writer.save()
     processed_data = output.getvalue()
     return processed_data
-
-
-# In[70]:
 
 
 def get_table_download_link(df):
@@ -127,13 +91,7 @@ def get_table_download_link(df):
     return f'<a href="data:application/octet-stream;base64,{b64.decode()}" download="extract.csv">Download csv file</a>'
 
 
-# In[71]:
-
-
 st.markdown(get_table_download_link(base), unsafe_allow_html=True)
-
-
-# In[ ]:
 
 
 
