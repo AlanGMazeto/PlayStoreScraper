@@ -1,1 +1,1 @@
-worker: sh setup.sh && streamlit run fullPlayScraper.py
+web: sh setup.sh && streamlit run fullPlayScraper.py
