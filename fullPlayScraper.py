@@ -2,7 +2,6 @@ import json
 import pandas as pd
 from tqdm import tqdm
 import seaborn as sns
-import matplotlib.pyplot as plt
 import requests
 
 from pygments import highlight
@@ -15,11 +14,6 @@ import play_scraper
 import streamlit as st
 import base64
 from io import BytesIO
-import os
-from intro_to_flask import app
-
-port = int(os.environ.get("PORT", 5000))
-app.run(debug=True, host='0.0.0.0', port=port)
 
 
 st.write("""
